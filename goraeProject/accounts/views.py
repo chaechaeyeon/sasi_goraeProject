@@ -1,10 +1,17 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from rest_framework import generics
 from posts.models import UserInfo
 from .serializers import UserSerializer, UserInfoSerializer
 from rest_framework import viewsets
 from rest_framework.decorators import api_view, action
 from rest_framework.response import Response
+
+
+#회원가입
+class UserCreate(generics.CreateAPIView):
+    queryset= User.objects.all()
+    serializer_class= UserSerializer
 
 class UserViewSet(viewsets.ModelViewSet) :
     queryset = User.objects.all()
