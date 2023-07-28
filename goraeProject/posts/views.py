@@ -16,6 +16,8 @@ class PostViewSet(ModelViewSet):
 
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    def perform_create(self, serializer):
+        serializer.save(writer=self.request.user)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -23,7 +25,7 @@ class PostViewSet(ModelViewSet):
 
         # 포인트부여
         receiver = serializer.validated_data.get('receiver') #받은 사람 정보 가져오기
-        receiver.userinfo.points += 1 
+        receiver.userinfo.points += 10 
         receiver.userinfo.save()
 
         # 편지생성
