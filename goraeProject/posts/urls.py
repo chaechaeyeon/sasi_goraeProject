@@ -2,7 +2,7 @@ from rest_framework.routers import SimpleRouter, DefaultRouter
 from django.urls import path, include
 from .views import MessageViewSet, ReceivedMessageViewSet
 
-#전체 메세지 확인용
+#전체 메세지 아이디 확인용
 message_router = DefaultRouter(trailing_slash=True)
 message_router.register('messages', MessageViewSet, basename='message')
 
