@@ -13,4 +13,5 @@ received_router.register(r'received/(?P<user_id>\d+)', ReceivedMessageViewSet, b
 urlpatterns = [
     path('', include(message_router.urls)),
     path('',include(received_router.urls)),
+
 ]
